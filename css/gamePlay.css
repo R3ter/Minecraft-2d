@@ -9,24 +9,28 @@ body {
 .gameplay {
   align-self: center;
   width: 90vw;
-  height: 40vw;
-  background-color: black;
+  height: 45vw;
+  background-color: rgb(78, 33, 33);
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
 }
 .tools {
   width: 20%;
   height: 100%;
   background-color: red;
 }
-.gridTiles {
-  width: 80%;
+/* .gridTiles {
+  flex-grow: 1;
   height: 100%;
   background-color: aqua;
-}
-.tiles {
+} */
+
+.gridTiles {
   display: grid;
-  grid-template-columns: repeat(16, 4vw);
-  grid-template-rows: repeat(9, 4vw);
-  gap: 5px;
+  grid-template-columns: repeat(30, 1fr);
+  grid-template-rows: repeat(18, 1fr);
+  gap: 1px;
+  width: 100%;
+  height: 100%;
 }
