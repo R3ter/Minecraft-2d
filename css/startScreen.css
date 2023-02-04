@@ -14,7 +14,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-self: center;
-  background-image: url("./Backgrounds/1.gif");
+  background-image: url("./../Backgrounds/1.gif");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -22,7 +22,7 @@ body {
 .logo {
   width: 40%;
   height: 20vw;
-  background-image: url("./Backgrounds/logo.png");
+  background-image: url("./../Backgrounds/logo.png");
   background-repeat: no-repeat;
   background-position: center;
   align-self: center;
