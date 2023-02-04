@@ -12,16 +12,12 @@ body {
   height: 40vw;
   background-color: black;
   display: flex;
-  overflow: scroll;
   flex-direction: row;
 }
 .tools {
   width: 20%;
-  height: 40vw;
+  height: 100%;
   background-color: red;
-  position: sticky;
-  right: 0;
-  top: 0;
 }
 .gridTiles {
   width: 80%;
@@ -30,7 +26,7 @@ body {
 }
 .tiles {
   display: grid;
-  grid-template-columns: repeat(20, 5vw);
-  grid-template-rows: repeat(8, 5vw);
+  grid-template-columns: repeat(16, 4vw);
+  grid-template-rows: repeat(9, 4vw);
   gap: 5px;
 }
