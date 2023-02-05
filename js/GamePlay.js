@@ -84,25 +84,33 @@ const colors = [
   {
     style: "background-image:url(./../Textures/Dirt_Path.jpg)",
     tool: "shovel",
+    name: "dirt",
   },
   {
     style: "background-image:url(./../Textures/Grass_Block.jpg)",
     tool: "shovel",
+    name: "grass",
   },
-  { style: "background-image:url(./../Textures/wood.jpg)", tool: "axe" },
+  {
+    style: "background-image:url(./../Textures/wood.jpg)",
+    tool: "axe",
+    name: "wood",
+  },
   {
     style: "background-image:url(./../Textures/Grave.jpg)",
     tool: "dirtAxe",
+    name: "grave",
   },
   {
     style: "background-image:url(./../Textures/carrots.jpg)",
     tool: "dirtAxe",
+    name: "carrots",
   },
 ];
 const grid = document.getElementById("grid");
 defaultMap.forEach((e) => {
   e.forEach((e1) => {
-    grid.innerHTML += `<div onclick="removeCell('${colors[e1].tool}',event)" class="cells" style="${colors[e1].style}; width: 100%; height: 100%"></div>`;
+    grid.innerHTML += `<div name="${colors[e1].tool}" onmousedown="removeCell(event)" class="cells" style="${colors[e1].style}; width: 100%; height: 100%"></div>`;
   });
 });
 const toolsDiv = document.getElementById("tools");
@@ -118,21 +126,48 @@ document.body.onselectstart = (e) => {
 
 let selectedItem;
 const selectItem = (e, event) => {
-  selectedItem = e;
+  Array.from(inventory.children).forEach((e) => {
+    e.style.boxShadow = ``;
+  });
+  selectedItem = { name: e, type: "tool" };
+
+  Array.from(toolsDiv.children.item(0).children).forEach((e) => {
+    e.style.boxShadow = ``;
+  });
   Array.from(event.target.parentElement.children).forEach((e) => {
     e.style.boxShadow = ``;
   });
   event.target.style.boxShadow = `0 0 20px #143b91`;
 };
-const removeCell = (e, event) => {
-  if (selectedItem === e) {
-    event.target.style.backgroundImage = "";
+const removeCell = (event) => {
+  if (selectedItem?.type == "tool") {
+    console.log(event.target);
+    if (event.target.getAttribute("name") === selectedItem.name) {
+      event.target.style.backgroundImage = "";
+    }
+  } else if (selectedItem?.type == "block") {
+    if (event.target.style.backgroundImage === "") {
+      event.target.style = selectedItem.style;
+      event.target.setAttribute("name", selectedItem.tool);
+    }
   }
 };
 const inventory = document.getElementById("inventory");
 colors.forEach((e) => {
   if (e.tool)
-    inventory.innerHTML += `<div class="inventoryTool" style="${
+    inventory.innerHTML += `<div onclick="selectInventory(event,'${e.style}','${
+      e.name
+    }','${e.tool}')" class="inventoryTool" style="${
       e.style
-    }"><p style="color:white;font-size:1vw">${10}</p></div>`;
+    }"><p style="color:white;font-size:1vw;pointer-events: none;">${10}</p></div>`;
 });
+const selectInventory = (e, style, name, tool) => {
+  selectedItem = { name, type: "block", style, tool };
+  Array.from(e.target.parentElement.children).forEach((e) => {
+    e.style.boxShadow = ``;
+  });
+  Array.from(toolsDiv.children.item(0).children).forEach((e) => {
+    e.style.boxShadow = ``;
+  });
+  e.target.style.boxShadow = `0 0 20px #143b91`;
+};
