@@ -5,20 +5,25 @@ body {
   height: 100%;
   display: flex;
   justify-content: center;
+  background-color: rgb(95, 5, 5);
 }
 .gameplay {
   align-self: center;
-  width: 90vw;
-  height: 45vw;
-  background-color: rgb(78, 33, 33);
+  width: 81.8vw;
+  height: 39.4vw;
+  background-color: rgb(178, 201, 187);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 .tools {
-  width: 20%;
+  width: 20vw;
+  flex-wrap: nowrap;
   height: 100%;
-  background-color: red;
+  background-color: rgb(38, 143, 111);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 /* .gridTiles {
   flex-grow: 1;
@@ -30,7 +35,47 @@ body {
   display: grid;
   grid-template-columns: repeat(30, 1fr);
   grid-template-rows: repeat(18, 1fr);
-  gap: 1px;
   width: 100%;
+  gap: 0px;
   height: 100%;
+}
+.cells {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.cells:hover {
+  box-shadow: inset 0px 0px 0px 1px rgb(0, 0, 0);
+
+  cursor: pointer;
+}
+.toolsCell {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.toolBox {
+  width: 5vw;
+  height: 5vw;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url("./../toolsImages/Axes.png");
+  align-self: center;
+  border: 1px black solid;
+}
+.inventory {
+  width: 100%;
+  height: 70%;
+  background-color: rgb(115, 122, 115);
+  display: grid;
+
+  gap: 10px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+.inventoryTool {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
